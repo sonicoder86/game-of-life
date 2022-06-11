@@ -2,16 +2,7 @@
   <Teleport to="#app">
     <div class="backdrop" v-if="showing" @click="onClose">
       <div class="modal">
-        <h1 class="title">
-          Game of Life,
-          <br />
-          with a&nbsp;
-          <span class="green">t</span>
-          <span class="blue">w</span>
-          <span class="purple">i</span>
-          <span class="pink">s</span>
-          <span class="orange">t</span>
-        </h1>
+        <h1 class="title">Conway's Game of Life</h1>
         <p class="subtitle">
           The Game of Life is a zero-player cellular automaton. How exciting,
           right? I promise you it is really cool, so please keep reading!
@@ -45,10 +36,6 @@
           That's it! Click on cells to make them alive, then press Start to
           simulate the game. You can even click while it is running, or drag
           your cursor on multiple cells!
-        </p>
-        <p class="rules">
-          What's the twist? For every generation a cell lives, it changes color,
-          creating beautiful and mesmerizing patterns. Hope you like it!
         </p>
         <hr class="divider" />
         <p class="footer">
@@ -125,26 +112,6 @@ export default defineComponent({
   margin: 42px 56px 42px 56px;
   line-height: 66px;
   font-size: 62px;
-}
-
-.green {
-  color: #7ed957;
-}
-
-.blue {
-  color: #5271ff;
-}
-
-.purple {
-  color: #8c52ff;
-}
-
-.pink {
-  color: #ff66c4;
-}
-
-.orange {
-  color: #ff914d;
 }
 
 .subtitle {
