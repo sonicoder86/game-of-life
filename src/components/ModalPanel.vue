@@ -62,7 +62,7 @@
           </a>
           &nbsp;and check out the code on my&nbsp;
           <a
-            href="https://github.com/andreacarrara/game-of-life"
+            href="https://github.com/vuesomedev/game-of-life"
             rel="noopener noreferrer"
             target="_blank"
           >
