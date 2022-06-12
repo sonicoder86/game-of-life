@@ -66,7 +66,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'ModalPanel',
+  name: 'Modal',
   props: ['showing'],
   emits: ['close'],
   setup(props, { emit }) {

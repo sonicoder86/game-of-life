@@ -22,7 +22,7 @@ import GridLine from './GridLine.vue';
 const cellSize = 30;
 
 export default defineComponent({
-  name: 'GameGrid',
+  name: 'Grid',
   props: ['numCols', 'grid'],
   emits: ['cell'],
   components: {

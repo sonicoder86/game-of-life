@@ -18,7 +18,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'HeaderToolbar',
+  name: 'Toolbar',
   props: ['running', 'generation'],
   emits: ['toggle', 'clear', 'info'],
   setup(props, { emit }) {
