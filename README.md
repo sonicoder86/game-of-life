@@ -1,35 +1,31 @@
-# game-of-life
+# Game of Life
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue 3 implementation of [Conway's Game of Life](https://wikipedia.org/wiki/Conway%27s_Game_of_Life).
+Play with it [here](https://vuesomedev.github.io/game-of-life).
+
+![Showcase](public/showcase.gif)
 
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Type Support for `.vue` Imports in TS
+## Technologies
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+Project built with:
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+- [Vue 3](https://vuejs.org/) to build the user interface.
+- [Vue Composition API](https://vuejs.org/api/composition-api-setup.html) to create components.
+- [Vue Teleport](https://vuejs.org/guide/built-ins/teleport.html) to render the information modal.
+- [Typescript](https://www.typescriptlang.org/) to have type safety.
+- [Vite](https://vitejs.dev/) to run and build the application.
+- [Vitest](https://vitest.dev/) to write tests and ensure everything works as intended.
+- [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) to ensure proper formatting.
+- [Github Actions](https://docs.github.com/en/actions) to create continous integration and deployment.
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Project Setup and Run
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
@@ -45,7 +41,7 @@ npm run build
 npm run test:unit
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Lint with [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/)
 
 ```sh
 npm run lint
