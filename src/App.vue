@@ -22,17 +22,28 @@ const grid = ref(getEmptyGrid(numRows, numCols));
 const generation = ref(0);
 const running = ref(false);
 const showing = ref(false);
+let timer: number;
 
 const onCell = (rowNumber: number, cellNumber: number) => {
   const newGrid = gridCopy(grid.value);
   newGrid[rowNumber][cellNumber] = newGrid[rowNumber][cellNumber] ? 0 : 1;
   grid.value = newGrid;
 };
-const onStart = () => {
-  grid.value = createNextGeneration(grid.value, numRows, numCols);
-  generation.value++;
+const onToggle = () => {
+  if (running.value) {
+    clearInterval(timer);
+    running.value = false;
+  } else {
+    running.value = true;
+    timer = setInterval(() => {
+      grid.value = createNextGeneration(grid.value, numRows, numCols);
+      generation.value++;
+    }, 200);
+  }
 };
 const onClear = () => {
+  clearInterval(timer);
+  running.value = false;
   grid.value = getEmptyGrid(numRows, numCols);
   generation.value = 0;
 };
@@ -48,7 +59,7 @@ const onInfo = () => {
   <HeaderToolbar
     :running="running"
     :generation="generation"
-    @start="onStart"
+    @toggle="onToggle"
     @clear="onClear"
     @info="onInfo"
   />

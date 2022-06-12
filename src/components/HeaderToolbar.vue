@@ -3,7 +3,7 @@
     <button
       class="control"
       :style="{ backgroundColor: running ? '#ff5757' : '#7ed957' }"
-      @click="onStart"
+      @click="onToggle"
     >
       {{ running ? 'Stop' : 'Start' }}
     </button>
@@ -20,10 +20,10 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'HeaderToolbar',
   props: ['running', 'generation'],
-  emits: ['start', 'clear', 'info'],
+  emits: ['toggle', 'clear', 'info'],
   setup(props, { emit }) {
-    const onStart = () => {
-      emit('start');
+    const onToggle = () => {
+      emit('toggle');
     };
     const onClear = () => {
       emit('clear');
@@ -32,7 +32,7 @@ export default defineComponent({
       emit('info');
     };
 
-    return { onStart, onClear, onInfo };
+    return { onToggle, onClear, onInfo };
   },
 });
 </script>
