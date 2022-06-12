@@ -1,58 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import HeaderToolbar from '@/components/HeaderToolbar.vue';
 import GameGrid from '@/components/GameGrid.vue';
 import ModalPanel from '@/components/ModalPanel.vue';
-import {
-  getEmptyGrid,
-  gridCopy,
-  createNextGeneration,
-} from '@/components/calculate';
+import { useGame, useModal } from '@/hooks';
 
-const windowHeight = window.innerHeight;
-const windowWidth = window.innerWidth;
-
-const resolution = 33;
-const toolbarHeight = 99;
-
-const numRows = Math.floor((windowHeight - toolbarHeight) / resolution);
-const numCols = Math.floor(windowWidth / resolution);
-
-const grid = ref(getEmptyGrid(numRows, numCols));
-const generation = ref(0);
-const running = ref(false);
-const showing = ref(false);
-let timer: number;
-
-const onCell = (rowNumber: number, cellNumber: number) => {
-  const newGrid = gridCopy(grid.value);
-  newGrid[rowNumber][cellNumber] = newGrid[rowNumber][cellNumber] ? 0 : 1;
-  grid.value = newGrid;
-};
-const onToggle = () => {
-  if (running.value) {
-    clearInterval(timer);
-    running.value = false;
-  } else {
-    running.value = true;
-    timer = setInterval(() => {
-      grid.value = createNextGeneration(grid.value, numRows, numCols);
-      generation.value++;
-    }, 200);
-  }
-};
-const onClear = () => {
-  clearInterval(timer);
-  running.value = false;
-  grid.value = getEmptyGrid(numRows, numCols);
-  generation.value = 0;
-};
-const onClose = () => {
-  showing.value = false;
-};
-const onInfo = () => {
-  showing.value = true;
-};
+const { onCell, onClear, onToggle, grid, generation, running, numCols } =
+  useGame();
+const { onClose, onInfo, showing } = useModal();
 </script>
 
 <template>

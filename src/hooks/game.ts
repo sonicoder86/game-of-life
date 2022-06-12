@@ -1,3 +1,5 @@
+import { ref } from 'vue';
+
 const neighbours: number[][] = [
   [-1, -1],
   [-1, 0],
@@ -57,4 +59,55 @@ export const createNextGeneration = (
 
 export const gridCopy = (grid: number[][]): number[][] => {
   return grid.map((line) => [...line]);
+};
+
+export const useGame = () => {
+  const windowHeight = window.innerHeight;
+  const windowWidth = window.innerWidth;
+
+  const resolution = 33;
+  const toolbarHeight = 99;
+
+  const numRows = Math.floor((windowHeight - toolbarHeight) / resolution);
+  const numCols = Math.floor(windowWidth / resolution);
+
+  const grid = ref(getEmptyGrid(numRows, numCols));
+  const generation = ref(0);
+  const running = ref(false);
+  let timer: NodeJS.Timer;
+
+  const onCell = (rowNumber: number, cellNumber: number) => {
+    const newGrid = gridCopy(grid.value);
+    newGrid[rowNumber][cellNumber] = newGrid[rowNumber][cellNumber] ? 0 : 1;
+    grid.value = newGrid;
+  };
+  const onToggle = () => {
+    if (running.value) {
+      clearInterval(timer);
+      running.value = false;
+    } else {
+      running.value = true;
+      timer = setInterval(() => {
+        grid.value = createNextGeneration(grid.value, numRows, numCols);
+        generation.value++;
+      }, 200);
+    }
+  };
+  const onClear = () => {
+    clearInterval(timer);
+    running.value = false;
+    grid.value = getEmptyGrid(numRows, numCols);
+    generation.value = 0;
+  };
+
+  return {
+    grid,
+    generation,
+    running,
+    onCell,
+    onToggle,
+    onClear,
+    numRows,
+    numCols,
+  };
 };
